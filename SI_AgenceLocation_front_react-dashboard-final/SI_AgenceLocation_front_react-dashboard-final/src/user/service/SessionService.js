@@ -11,8 +11,13 @@ const SessionService = {
   getToken: () => {
     let encryptedToken = Cookies.get("TK");
     if (encryptedToken) {
-      let decryptedToken = JSON.parse(atob(encryptedToken));
-      return decryptedToken;
+      try {
+        let decryptedToken = JSON.parse(atob(encryptedToken));
+        return decryptedToken;
+      } catch (error) {
+        console.error("Error parsing token:", error);
+        return null;
+      }
     } else {
       return null;
     }
@@ -28,8 +33,13 @@ const SessionService = {
   getRole: () => {
     let encryptedRoles = Cookies.get("RL");
     if (encryptedRoles) {
-      let decryptedRoles = JSON.parse(atob(encryptedRoles));
-      return decryptedRoles;
+      try {
+        let decryptedRoles = JSON.parse(atob(encryptedRoles));
+        return decryptedRoles;
+      } catch (error) {
+        console.error("Error parsing roles:", error);
+        return null;
+      }
     } else {
       return null;
     }
@@ -57,8 +67,13 @@ const SessionService = {
   getUserInfos: () => {
     let encryptedUserInfo = Cookies.get("UIF");
     if (encryptedUserInfo) {
-      let decryptedUserInfo = JSON.parse(atob(encryptedUserInfo));
-      return decryptedUserInfo;
+      try {
+        let decryptedUserInfo = JSON.parse(atob(encryptedUserInfo));
+        return decryptedUserInfo;
+      } catch (error) {
+        console.error("Error parsing user info:", error);
+        return null;
+      }
     } else {
       return null;
     }
