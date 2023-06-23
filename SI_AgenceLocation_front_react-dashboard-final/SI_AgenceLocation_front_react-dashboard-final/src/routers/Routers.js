@@ -17,6 +17,18 @@ import Login from "user/pages/auth/Login";
 import Register from "user/pages/auth/Register";
 import ForgetPassword from "user/pages/auth/ForgotPassword";
 import ResetPassword from "user/pages/auth/ResetPassword";
+import SessionService from "../user/service/SessionService";
+
+const PrivateRoute = ({ element: Element, redirectTo, path }) => {
+  const token = SessionService.getToken();
+
+  if (token) {
+    return <Element />;
+  } else {
+    return <Navigate to={redirectTo} replace />;
+  }
+};
+
 const Routers = () => {
   return (
     <Routes>
@@ -27,16 +39,17 @@ const Routers = () => {
       <Route path="/cars" element={<CarListing />} />
       <Route path="/cars/:slug" element={<CarDetails />} />
       <Route path="/blogs" element={<Blog />} />
-
       <Route path="/blogs/:slug" element={<BlogDetails />} />
       <Route path="/contact" element={<Contact />} />
-
       <Route path="/auth/login" element={<Login />} />
       <Route path="/auth/register" element={<Register />} />
       <Route path="/auth/forgot-password" element={<ForgetPassword />} />
       <Route path="/auth/reset-password/:token" element={<ResetPassword />} />
 
-      <Route path="/dashboard" element={<UserDashboard />} />
+      <Route
+        path="/dashboard"
+        element={<PrivateRoute element={Dashboard} redirectTo="/auth/login" />}
+      />
 
       <Route path="*" element={<NotFound />} />
     </Routes>
