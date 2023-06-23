@@ -60,16 +60,16 @@ public class AccountsController {
         else {
             user = this.utilisateurService.addNewUser(user);
             this.accountService.affectRoleToUser(user.getUsername(), "ASSISTANT");
-            
+
             // Create an activity for this user
-            
+
             ActiviteLog activity = new ActiviteLog();
             activity.setUser(user);
-            
+
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             Date date = sdf.parse("1990-01-01");
             activity.setDateSingUp(date);
-            
+
             activiteRepo.save(activity);
             return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
         }
