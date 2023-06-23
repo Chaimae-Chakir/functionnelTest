@@ -48,17 +48,18 @@ function LoginPage() {
     } else {
       setPasswordError("");
     }
-
+    //console username and pass
     if (username && password) {
+      console.log(username, password);
       axios
-        .post(API_BASE_URL + "/auth/login", {
+        .post("http://localhost:8081/api/accounts/login", {
           username: username,
           password: password,
         })
         .then((response) => {
           successfulLogin();
           console.log(response);
-          SessionService.setToken(response.data.accessToken);
+          SessionService.setToken(response.data.accesstoken);
           SessionService.setRole(response.data.role[0]);
           const user_infos = SessionService.userInfos(
             response.data.firstName,
@@ -70,16 +71,14 @@ function LoginPage() {
           SessionService.setUserInfos(user_infos);
           updateIsLoggin(true);
           console.log(isLoggin);
+          //console the sessiontoken
+          console.log('the token is'+SessionService.getToken());
         })
         .catch((error) => {
           setError(error.response.data);
         });
     }
   };
-
-  // function handleLogin() {
-  //   history.push("/");
-  // }
 
   return (
     <div className={containerClassName}>
