@@ -1,0 +1,93 @@
+.social__link-icon {
+  text-decoration: none;
+
+  color: #000d6b;
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+.Mery{
+
+  border: none;
+  outline: none;
+
+  border-radius: 5px;
+  color: #000d6b;
+
+
+}
+.header_b  {
+  background: #00a187 ;
+  padding: 10px 40px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+.header_b a {
+
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  text-decoration: none;
+  color: #fff;
+  justify-content: end;
+  font-size: 0.9rem;
+}
+
+.header__btn a:hover {
+  color: #fff;
+  background: #00a187 ;
+}
+
+h2{
+  font-weight: bold;
+}
+h3{
+  font-weight: bold;
+  
+}
+
+.butn {
+  background: #da1a54 !important;
+  color: #fff !important;
+  height: 40px;
+  width: 150px ;
+  border: none;
+ 
+  border-radius: 10px;
+  outline: none;
+}
+
+
+.contact__btn {
+  padding: 7px 15px;
+  background: #000d6b;
+ 
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+.control{
+  width: "800px";
+
+}
+@media only screen and (max-width: 768px) {
+  .contact__btn {
+    margin-bottom: 40px;
+    font-size: 0.8rem;
+  }
+.header_b{
+  margin-left: 20px;
+ 
+}
+input{
+  width: "100px";
+  height:"55px"
+}
+.butn {
+  height: 30px;
+  
+}
+}

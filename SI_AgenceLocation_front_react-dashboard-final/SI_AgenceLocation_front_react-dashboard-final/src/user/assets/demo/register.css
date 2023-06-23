@@ -1,0 +1,6 @@
+.p-password .p-password-toggle {
+  color: red;
+  font-size: 20px;
+  position: relative;
+  bottom: "20px";
+}
