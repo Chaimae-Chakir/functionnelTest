@@ -1,4 +1,3 @@
-
 import React, { useRef } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -20,21 +19,26 @@ const navLinks = [
     path: "/cars",
     display: "Cars",
   },
-
-{ /* {
+  /* {
     path: "/blogs",
     display: "Blog",
   },
   {
     path: "/contact",
     display: "Contact",
-  },*/}
+  },*/
 ];
 
 function Header() {
   const menuRef = useRef(null);
 
   const toggleMenu = () => menuRef.current.classList.toggle("menu__active");
+
+  const register = () => {
+    // Add your registration logic here
+    console.log("Register button clicked");
+  };
+
   return (
     <header className="header">
       {/* ============ header top ============ */}
@@ -44,9 +48,9 @@ function Header() {
         <Container>
           <Row>
             <Col>
-            <div className="header__location d-flex align-items-center gap-2">
+              <div className="header__location d-flex align-items-center gap-2">
                 <span>
-                <i class="bi bi-globe-europe-africa"></i>
+                  <i className="bi bi-globe-europe-africa"></i>
                 </span>
                 <div className="header__location-content">
                   <h4>Maroc</h4>
@@ -55,19 +59,20 @@ function Header() {
               </div>
             </Col>
 
-            <Col >
-            <div className="logo">
+            <Col>
+              <div className="logo">
                 <h1>
-                  <Link to="/home" className=" d-flex align-items-center gap-2">
-                  <img src={image} height="70px"/>
+                  <Link to="/home" className="d-flex align-items-center gap-2">
+                    <img src={image} height="70px" alt="Logo" />
                   </Link>
                 </h1>
               </div>
             </Col>
-            <Col >
+            
+            <Col>
               <div className="header__location d-flex align-items-center gap-2">
                 <span>
-                  <i class="bi bi-clock-history"></i>
+                  <i className="bi bi-clock-history"></i>
                 </span>
                 <div className="header__location-content">
                   <h4>Lundi -- Samedi</h4>
@@ -75,20 +80,18 @@ function Header() {
                 </div>
               </div>
             </Col>
-            <Col
-              
-              className=" d-flex align-items-center justify-content-end "
-            >
-             <Link to="/contact"> <button type="button" class="btn btn-success">
-                 <i className="bi bi-calendar2-check">
-                  </i>  Gérer votre Réservation</button></Link>
-              {/*<button className="header__btn btn ">
-                <Link to="/contact">
-                <i class="bi bi-calendar2-check"></i>  Gérer votre Réservation
-                </Link>
-  </button>*/}
-            </Col>
+            
+            <Col className="d-flex align-items-center justify-content-end">
+              <Link to="/contact">
+                <button type="button" className="btn btn-success mr-2">
+                  <i className="bi bi-calendar2-check"></i> Gérer votre Réservation
+                </button>
+              </Link>
 
+              <button type="button" className="btn btn-primary" onClick={register}>
+                Register
+              </button>
+            </Col>
           </Row>
         </Container>
       </div>
@@ -99,7 +102,7 @@ function Header() {
         <Container>
           <div className="navigation__wrapper d-flex align-items-center justify-content-between">
             <span className="mobile__menu">
-              <i class="ri-menu-line" onClick={toggleMenu}></i>
+              <i className="ri-menu-line" onClick={toggleMenu}></i>
             </span>
 
             <div className="navigation" ref={menuRef} onClick={toggleMenu}>
@@ -117,12 +120,11 @@ function Header() {
                 ))}
               </div>
             </div>
-
-          
           </div>
         </Container>
       </div>
     </header>
-  )
+  );
 }
-export default  Header;
+
+export default Header;
