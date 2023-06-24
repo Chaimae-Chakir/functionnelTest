@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { Container, Row, Col, Modal, Button, Form } from "reactstrap";
@@ -55,11 +56,25 @@ function Header() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your registration logic here
-    console.log("Registration form submitted:", registrationForm);
-    toggleRegisterModal(); // Close the modal after registration logic
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8081/clients/create/",
+        registrationForm
+      );
+
+      const responseData = response.data;
+      console.log("Registration successful:", responseData);
+      toggleRegisterModal(); // Close the modal after registration
+
+      // You can perform additional actions here based on the response
+
+    } catch (error) {
+      console.error("Registration error:", error);
+      // Handle the error condition, show a message, etc.
+    }
   };
 
   return (
