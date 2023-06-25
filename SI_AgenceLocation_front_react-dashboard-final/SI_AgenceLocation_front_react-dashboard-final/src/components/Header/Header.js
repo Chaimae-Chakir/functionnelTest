@@ -129,6 +129,12 @@ function Header() {
               <button type="button" className="btn btn-primary ml-2" onClick={toggleRegisterModal}>
                 Register
               </button>
+              
+              <Link to="/auth/login">
+              <button type="button" className="btn btn-success">
+                  <i className="bi bi-calendar2-check"></i> Login
+                </button>
+              </Link>
             </Col>
           </Row>
         </Container>
@@ -161,6 +167,7 @@ function Header() {
           </div>
         </Container>
       </div>
+      
 
       <Modal isOpen={isRegisterModalOpen} toggle={toggleRegisterModal}>
       <Form onSubmit={handleSubmit}>
